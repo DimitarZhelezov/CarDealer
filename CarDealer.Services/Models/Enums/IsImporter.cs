@@ -7,6 +7,7 @@ namespace CarDealer.Services.Models.Enums
     public enum IsImporter
     {
         local = 1,
-        importer = 2
+        importer = 2,
+        all = 3
     }
 }

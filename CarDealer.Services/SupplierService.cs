@@ -24,6 +24,10 @@ namespace CarDealer.Services
 
             switch (isImporter)
             {
+                case IsImporter.all:
+                    suppliers = suppliers.Select(c => c)
+                        .AsQueryable();
+                    break;
                 case IsImporter.local:
                     suppliers = suppliers.Select(c => c)
                         .Where(s => s.IsImporter == false)
@@ -44,7 +48,8 @@ namespace CarDealer.Services
                 {
                     Id = s.Id,
                     Name = s.Name,
-                    NumberOfParts = s.Parts.Count
+                    NumberOfParts = s.Parts.Count,
+                    IsImporter = s.IsImporter
                 })
                 .ToList();
         }

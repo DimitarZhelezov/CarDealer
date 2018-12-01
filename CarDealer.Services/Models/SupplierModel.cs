@@ -11,5 +11,7 @@ namespace CarDealer.Services.Models
         public string Name { get; set; }
 
         public int NumberOfParts { get; set; }
+
+        public bool IsImporter { get; set; }
     }
 }

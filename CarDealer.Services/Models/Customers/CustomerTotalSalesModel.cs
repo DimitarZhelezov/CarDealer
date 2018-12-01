@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CarDealer.Services.Models.Cars;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CarDealer.Services.Models.Customers
@@ -7,13 +8,9 @@ namespace CarDealer.Services.Models.Customers
     {
         public string Name { get; set; }
 
-
         public bool IsYoungDriver { get; set; }
 
-
-        public IEnumerable<SaleModel> BoughtCars { get; set; }
-
-        public int TotalBoughtCars => this.BoughtCars.Count();
+        public IEnumerable<CarPriceModel> BoughtCars { get; set; }
 
         public decimal TotalMoneySpent
         {

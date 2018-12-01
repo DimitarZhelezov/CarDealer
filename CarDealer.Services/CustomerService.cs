@@ -1,11 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using CarDealer.Services.Models;
-using CarDealer.Services.Models.Enums;
-using CarDealer.Services.Abstractions;
+﻿using CarDealer.Services.Abstractions;
+using CarDealer.Services.Models.Cars;
 using CarDealer.Services.Models.Customers;
+using CarDealer.Services.Models.Enums;
 using CarDealersWeb.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarDealer.Services
 {
@@ -48,10 +48,10 @@ namespace CarDealer.Services
                 .Where(c => c.Id == id)
                 .Select(c => new CustomerTotalSalesModel
                 {
-                    Name = c.Name,
+                    Name = c.Name, 
                     IsYoungDriver = c.IsYoungDriver,
-                    BoughtCars = c.Sales.Select( s => new SaleModel
-                    {
+                    BoughtCars = c.Sales.Select( s => new CarPriceModel
+                    { 
                         Price = s.Car.Parts.Sum(p => p.Part.Price),
                         Discount = s.Discount
                     })

@@ -6,6 +6,5 @@ namespace CarDealer.Services.Models.Cars
     {
         public IEnumerable<PartModel> Parts { get; set; }
 
-
     }
 }

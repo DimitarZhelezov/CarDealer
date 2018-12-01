@@ -9,6 +9,5 @@ namespace CarDealer.Services.Models.Customers
         public DateTime BirthDay { get; set; }
 
         public bool IsYoungDriver { get; set; }
-
     }
 }

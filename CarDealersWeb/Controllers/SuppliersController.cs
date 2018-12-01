@@ -22,10 +22,38 @@ namespace CarDealersWeb.Controllers
         [Route("suppliers/{a}")]
         public IActionResult Suppliers(string a)
         {
-            IsImporter isLocal = a.ToLower() == "local"
-                ? IsImporter.local
-                : IsImporter.importer;
+            IsImporter isLocal = new IsImporter();
 
+            if (a.ToLower() == "all" || a.ToLower() == "suppliers")
+            {
+                isLocal = IsImporter.all;
+            }
+            if (a.ToLower() == "local")
+            {
+                isLocal = IsImporter.local;
+            }
+            if (a.ToLower() == "importer")
+            {
+                isLocal = IsImporter.importer;
+            }
+
+            switch (a.ToLower())
+            {
+                case "all":
+                    isLocal = IsImporter.all;
+                    break;
+                case "suppliers":
+                    isLocal = IsImporter.all;
+                    break;
+                case "local":
+                    isLocal = IsImporter.local;
+                    break;
+                case "importer":
+                    isLocal = IsImporter.importer;
+                    break;
+                default:
+                    break;
+            }
 
             var suppliers = this.supplierService.Suppliers(isLocal);
 
