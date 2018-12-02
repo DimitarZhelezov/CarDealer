@@ -1,13 +1,14 @@
 ﻿using CarDealer.Services.Abstractions;
-using CarDealer.Services.Models.Cars;
 using CarDealer.Services.Models.Customers;
 using CarDealer.Services.Models.Enums;
+using CarDealer.Services.Models.Sales;
+using CarDealers.Data.Models;
 using CarDealersWeb.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CarDealer.Services
+namespace CarDealer.Services.Implementations
 {
     public class CustomerService : ICustomerService
     {
@@ -16,6 +17,19 @@ namespace CarDealer.Services
         public CustomerService(CarDealersDbContext carDealersDbContext)
         {
             this.carDealersDbContext = carDealersDbContext;
+        }
+
+        public void Create(string name, DateTime birthDay, bool isYoungDriver)
+        {
+            var customer = new Customer
+            {
+                Name = name,
+                BirthDay = birthDay,
+                IsYoungDriver = isYoungDriver
+            };
+
+            this.carDealersDbContext.Customers.Add(customer);
+            this.carDealersDbContext.SaveChanges();
         }
 
         public IEnumerable<CustomerModel> OrderedCustomers(OrderDirection order)
@@ -50,7 +64,7 @@ namespace CarDealer.Services
                 {
                     Name = c.Name, 
                     IsYoungDriver = c.IsYoungDriver,
-                    BoughtCars = c.Sales.Select( s => new CarPriceModel
+                    BoughtCars = c.Sales.Select( s => new SaleModel
                     { 
                         Price = s.Car.Parts.Sum(p => p.Part.Price),
                         Discount = s.Discount

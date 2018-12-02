@@ -1,0 +1,13 @@
+﻿@model SaleDetailsModel
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+@Model.CustomerName
+@Model.Car.Model
+@Model.Car.Make
+@(Model.Car.TravellDistance / 10000)

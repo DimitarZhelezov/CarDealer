@@ -5,9 +5,8 @@ using CarDealersWeb.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace CarDealer.Services
+namespace CarDealer.Services.Implementations
 {
     public class SupplierService : ISupplierService
     {

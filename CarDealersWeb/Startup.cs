@@ -1,13 +1,12 @@
-﻿using Data.Migration;
+﻿using CarDealersWeb.Data;
+using Data.Migration;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CarDealersWeb.Data;
-using CarDealer.Services;
-using CarDealer.Services.Abstractions;
+using CarDealersWeb.Extensions;
 
 namespace CarDealersWeb
 {
@@ -29,9 +28,7 @@ namespace CarDealersWeb
                 .AddEntityFrameworkStores<CarDealersDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddTransient<ICustomerService, CustomerService>();
-            services.AddTransient<ICarService, CarService>();
-            services.AddTransient<ISupplierService, SupplierService>();
+            services.AddDomainServices();
 
             services.AddMvc();
         }

@@ -4,7 +4,7 @@ using CarDealersWeb.Data;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CarDealer.Services
+namespace CarDealer.Services.Implementations
 {
     public class CarService : ICarService
     {
